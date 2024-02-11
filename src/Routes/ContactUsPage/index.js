@@ -62,6 +62,8 @@ const Col12 = styled(Col)`
   padding-bottom: 60px;
   @media screen and (max-width: 768px) {
     flex-basis: 100%;
+    padding-bottom: 30px;
+    padding-top: 30px;
   }
 `;
 
@@ -105,6 +107,10 @@ const Heading = styled.div`
   color: #0e1014;
   line-height: 34px;
   font-weight: 500;
+  @media screen and (max-width: 768px) {
+    font-size:20px;
+    font-weight: 600;
+  }
 `;
 
 const InputField = styled.input`
@@ -185,6 +191,16 @@ const Divider = styled.div`
   background: #d9d9d9;
 `;
 
+const VirtuosoftMap = styled.img`
+max-width: 100%;
+max-height: 100%;
+height: 505px;
+width: 100%;
+@media screen and (max-width: 768px) {
+  height:200px;
+}
+`;
+
 const ContactUsPage = () => {
   return (
     <Section>
@@ -248,15 +264,9 @@ const ContactUsPage = () => {
         </Row>
         <Row>
           <Col12>
-            <img
+            <VirtuosoftMap
               src={contactmap}
               alt="virtuosoft-map"
-              style={{
-                maxWidth: "100%",
-                maxHeight: "100%",
-                height: "505px",
-                width: "100%",
-              }}
             />
           </Col12>
         </Row>

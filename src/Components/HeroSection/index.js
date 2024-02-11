@@ -24,7 +24,7 @@ const CenteredText = styled(motion.div)`
   padding-bottom:52px;
   
   @media screen and (max-width: 768px) {
-    font-size: 28px;
+    font-size: 26px;
     font-style: normal;
     font-weight: 600;
     line-height: 28px;

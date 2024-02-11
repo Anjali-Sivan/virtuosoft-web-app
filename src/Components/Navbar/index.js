@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import logo from "../../Assets/Logo/virtuosoft-logo-2x.png";
 import styled from "styled-components";
+import { MenuButton } from "../MenuBUtton";
 // import { useNavigate } from "react-router-dom";
 
 // Styled component for the navbar container
@@ -16,6 +17,7 @@ const NavbarContainer = styled.nav`
   height: 80px;
   top:0;
   position: sticky;
+  z-index:2000;
 `;
 
 // Styled component for the logo
@@ -35,11 +37,11 @@ const NavLinks = styled.ul`
   transform: translateX(-50%);
   @media screen and (max-width: 768px) {
     flex-direction: column;
-    position: fixed;
-    top: 80px; // Assuming navbar height is 80px
-    left: 0;
-    right: 0;
-    background-color: #000; // Background color for the dropdown
+    // position: fixed;
+    top: 80px; 
+    width:100vw;
+    height:100vh;
+    background-color: #fff; // Background color for the dropdown
     display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
     align-items: center; // Center items vertically
     padding: 0;
@@ -95,15 +97,6 @@ const Burger = styled.div`
   }
 `;
 
-// Styled component for the burger icon lines
-const BurgerLine = styled.div`
-  width: 25px;
-  height: 3px;
-  background-color: #000;
-  margin: 5px;
-  cursor: pointer;
-`;
-
 // React component for the Navbar
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -120,30 +113,29 @@ const Navbar = () => {
           height: "36px",
         }}
       />
-      <NavLinks>
-        <NavLink>
-          <Link href="/">Home</Link>
-        </NavLink>
-        <NavLink>
-          <Link href="/about-us">About</Link>
-        </NavLink>
-        <NavLink>
-          <Link href="/services">Services</Link>
-        </NavLink>
-        <NavLink>
-          <Link href="/products">Our products</Link>
-        </NavLink>
-        <NavLink>
-          <Link href="/achievements">Achievements</Link>
-        </NavLink>
+      {/* <NavLinks> */}
+      <NavLinks isOpen={isOpen}>
+        {[
+          { label: "Home", link: "/" },
+          { label: "About", link: "/about-us" },
+          { label: "Services", link: "/services" },
+          { label: "Our products", link: "/products" },
+          { label: "Achievements", link: "/achievements" },
+        ].map((item, index) => (
+          <NavLink key={index} index={index}>
+            <Link href={item.link}>{item.label}</Link>
+          </NavLink>
+        ))}
+      {/* </NavLinks> */}
       </NavLinks>
       <ContactLink as="a" href="/contact-us">
         Contact us
       </ContactLink>
-      <Burger onClick={() => setIsOpen(!isOpen)}>
-        <BurgerLine />
-        <BurgerLine />
-        <BurgerLine />
+      <Burger>
+        <MenuButton
+        isOpen={isOpen}
+        onClick={() => setIsOpen(!isOpen)}
+      />
       </Burger>
     </NavbarContainer>
   );
