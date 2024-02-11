@@ -19,6 +19,9 @@ const Row = styled.div`
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
+  @media screen and (max-width: 768px) {
+    flex-direction:column;
+  }
 `;
 
 const Col7 = styled.div`
@@ -29,7 +32,7 @@ const Col7 = styled.div`
   @media screen and (max-width: 768px) {
     flex-basis: 100%;
     max-width: 100%;
-    padding: 20px;
+    // padding: 20px;
   }
 `;
 

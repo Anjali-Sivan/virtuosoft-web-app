@@ -26,10 +26,21 @@ const FooterContent = styled(motion.div)`
 const Column6 = styled.div`
   flex: 0 0 100%;
   color: #fff;
-  font-size: 18px;
-
+  // font-size: 18px;
   @media screen and (min-width: 768px) {
     flex: 0 0 50%;
+  }
+`;
+
+const FooterDiv = styled.div`
+  font-size: 61px;
+  line-height: 81px;
+  font-weight: 300px;
+  display: flex;
+  @media screen and (max-width: 768px) {
+    font-size: 55px;
+    line-height: 70px;
+    padding-bottom: 20px;
   }
 `;
 
@@ -60,14 +71,7 @@ const Footer = () => {
       >
         <Column6 className="col-6">
           <Row>
-            <div
-              style={{
-                fontSize: "61px",
-                lineHeight: "81px",
-                fontWeight: 300,
-                display: "flex",
-              }}
-            >
+            <FooterDiv>
               <span>
                 {"Have a project in mind? let’s talk"}
                 &nbsp;
@@ -103,7 +107,7 @@ const Footer = () => {
                   />
                 </svg>
               </span>
-            </div>
+            </FooterDiv>
             <div>{"contact@virtuosoft.in"}</div>
           </Row>
         </Column6>
@@ -111,37 +115,79 @@ const Footer = () => {
         <Column2 className="col-2">
           <Row>
             <div>
-              <ul style={{fontSize:"21px",lineHeight:'40px',letterSpacing:'0.5%',color:'#F5F5F5',listStyleType:'none'}}>
-                <li style={{cursor:'pointer'}} onClick={()=>navigate('/')}>{'Home'}</li>
-                <li style={{cursor:'pointer'}} onClick={()=>navigate('/about-us')}>{'About'}</li>
-                <li style={{cursor:'pointer'}} onClick={()=>navigate('/services')}>{'Services'}</li>
-                <li style={{cursor:'pointer'}} onClick={()=>navigate('/products')}>{'Products'}</li>
+              <ul
+                style={{
+                  fontSize: "21px",
+                  lineHeight: "40px",
+                  letterSpacing: "0.5%",
+                  color: "#F5F5F5",
+                  listStyleType: "none",
+                }}
+              >
+                <li style={{ cursor: "pointer" }} onClick={() => navigate("/")}>
+                  {"Home"}
+                </li>
+                <li
+                  style={{ cursor: "pointer" }}
+                  onClick={() => navigate("/about-us")}
+                >
+                  {"About"}
+                </li>
+                <li
+                  style={{ cursor: "pointer" }}
+                  onClick={() => navigate("/services")}
+                >
+                  {"Services"}
+                </li>
+                <li
+                  style={{ cursor: "pointer" }}
+                  onClick={() => navigate("/products")}
+                >
+                  {"Products"}
+                </li>
               </ul>
             </div>
             <div>
-            <ul style={{fontSize:"21px",lineHeight:'40px',letterSpacing:'0.5%',color:'#F5F5F5',listStyleType:'none'}}>
-                <li>{'Linkedin'}</li>
-                <li>{'Facebook'}</li>
+              <ul
+                style={{
+                  fontSize: "21px",
+                  lineHeight: "40px",
+                  letterSpacing: "0.5%",
+                  color: "#F5F5F5",
+                  listStyleType: "none",
+                }}
+              >
+                <li>{"Linkedin"}</li>
+                <li>{"Facebook"}</li>
               </ul>
             </div>
           </Row>
         </Column2>
       </FooterContent>
-      <div style={{marginTop:'100px',height:'2px',background:'#393939'}}></div>
-      <div style={{display:'flex',justifyContent:'space-between',paddingTop:'23px',color:'#F5F5F5'}}>
-      <img
-        src={logo}
-        alt="Virtuosoft-Logo"
+      <div
+        style={{ marginTop: "100px", height: "2px", background: "#393939" }}
+      ></div>
+      <div
         style={{
-          maxWidth: "100%",
-          maxHeight: "100%",
-          width: "160px",
-          height: "36px",
+          display: "flex",
+          justifyContent: "space-between",
+          paddingTop: "23px",
+          color: "#F5F5F5",
         }}
-      />
-      <span>
-      Copyright © 2024 virtuosoft
-      </span>
+      >
+        <img
+          src={logo}
+          alt="Virtuosoft-Logo"
+          style={{
+            maxWidth: "100%",
+            maxHeight: "100%",
+            width: "160px",
+            height: "36px",
+          }}
+        />
+         <span style={{ display: window.innerWidth > 768 ? "block" : "none" }}>
+          Copyright © 2024 virtuosoft
+        </span>
       </div>
     </FooterWrapper>
   );

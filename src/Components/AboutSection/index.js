@@ -47,6 +47,8 @@ const Col4 = styled(Col)`
 
   @media screen and (max-width: 768px) {
     flex-basis: 100%;
+    font-size: 15px;
+    line-height: 17px;
   }
 `;
 
@@ -58,6 +60,8 @@ const Col6 = styled(Col)`
 
   @media screen and (max-width: 768px) {
     flex-basis: 100%;
+    font-size: 18px;
+  line-height: 28px;
   }
 `;
 
@@ -75,6 +79,9 @@ const Button = styled.button`
   padding-left: 20px;
   padding-right: 20px;
   cursor: pointer;
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const ImageDiv = styled.div`
@@ -83,7 +90,7 @@ const ImageDiv = styled.div`
   box-sizing: border-box;
   padding-top: 70px;
   @media screen and (max-width: 768px) {
-    gap: 20px;
+    gap: 10px;
     padding-top: 48px;
   }
 `;
@@ -92,8 +99,8 @@ const Image1 = styled(motion.img)`
   width: 385px;
   height: 296;
   @media screen and (max-width: 768px) {
-    width: 182px;
-    height: 140px;
+    width: 158px;
+    height: 135px;
   }
 `;
 
@@ -101,8 +108,8 @@ const Image2 = styled(motion.img)`
   width: 280px;
   height: 232px;
   @media screen and (max-width: 768px) {
-    width: 134px;
-    height: 110px;
+    width: 130px;
+    height: 105px;
   }
 `;
 

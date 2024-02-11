@@ -285,9 +285,9 @@ const OurProducts = () => {
                           y={(544 - 300) / 2} // Calculate the y position to center align
                           width="429"
                           height="300"
-                          initial={{ opacity: 0, y: 0, x: 60 }}
+                          initial={{ opacity: 0, y: 0, x: 80 }}
                           animate={{ opacity: 1, y: 0, x: 0 }}
-                          exit={{ opacity: 0, y: 0, x: 0 }}
+                          exit={{ opacity: 0.5, y: 0, x: -450 }}
                           transition={{ duration: 0.25 }}
                         />
                       </svg>

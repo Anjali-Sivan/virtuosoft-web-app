@@ -3,6 +3,7 @@ import service2 from '../../Assets/service2.png';
 import service3 from '../../Assets/service3.png';
 import service4 from '../../Assets/service4.png';
 import service5 from '../../Assets/service5.png';
+import mobileservice1 from '../../Assets/mobileservice1.png';
 
 export const data = [
   {
@@ -13,7 +14,7 @@ export const data = [
       "We collaborate closely to understand the business processes, challenges, and goals which enables to develop a comprehensive roadmap and architecture that forms the foundation for a robust and future-proof application. We leverage the latest technologies and follow industry-standard coding practices to create scalable and secure applications that meet specific needs of client.",
       "Our solutions are tailored to the specific requirements, ensuring that the application aligns perfectly with business processes. We design applications with scalability, allowing them to grow and adapt as your business evolves",
     ],
-    image:<img src={service1} alt='service-1' style={{maxHeight:'100%',maxWidth:'100%',width:'516px',height:'108px'}}/>,
+    image:<img src={window.innerWidth > 768 ? service1 : mobileservice1} alt='service-1' style={{maxHeight:'100%',maxWidth:'100%',width:`${window.innerWidth > 768 ?'516px':'110px'}`,height:'108px'}}/>,
     bgcolor: "#EFEAFD",
   },
   {
