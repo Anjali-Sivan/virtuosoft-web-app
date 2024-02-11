@@ -35,8 +35,8 @@ const StyledImage = styled(motion.img)`
   width: 64px;
   height: 64px;
   @media screen and (max-width: 768px) {
-    width: 22.325px;
-    height: 22.325px;
+    width: 22px;
+    height: 22px;
   }
 `;
 
