@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { data } from "../../Components/OurProducts/contents";
@@ -48,10 +48,10 @@ const Col6 = styled.div`
 `;
 
 const Col1 = styled.div`
-  flex: 0 0 calc(100% / 12); // Assuming you're using a 12-column grid system
+  flex: 0 0 calc(100% / 12);
   width: calc(100% / 12);
   @media screen and (max-width: 768px) {
-    display: none; // Hide on smaller screens
+    display: none;
   }
 `;
 
@@ -68,11 +68,13 @@ const Col5 = styled.div`
 const ResponsiveSVG = styled.div`
   display: block;
   max-width: 100%;
-  height: 100%;
+  height: 432px;
+
   svg {
     width: 100%;
-    height: auto;
+    height: 100%;
   }
+
   img {
     max-width: 100%;
     max-height: 100%;
@@ -132,6 +134,10 @@ const Image = styled.img`
 `;
 
 const OurProductsPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Section>
       <Container>
@@ -140,9 +146,7 @@ const OurProductsPage = () => {
             <Image src={diagram} alt="data-diagram" />
           </Col6>
         </Row>
-        {/* <Row> */}
         <Heading>{"OUR PRODUCTS"}</Heading>
-        {/* </Row> */}
         {data.map((item, index) => (
           <Row key={index}>
             {index % 2 === 0 ? (
@@ -154,82 +158,87 @@ const OurProductsPage = () => {
                   </SubHeading>
                   <Paragraph>{item.paragrapgh}</Paragraph>
                 </Col6>
-                <Col1 /> {/* Spacer */}
+                <Col1 />
                 <Col5>
-                  <ResponsiveSVG>
-                    <svg
-                      width="493"
-                      height="432"
-                      viewBox="0 0 493 432"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M402.121 0H20C8.95431 0 0 8.95431 0 20V412C0 423.046 8.9543 432 20 432H473C484.046 432 493 423.046 493 412V77.6038C493 69.0309 489.073 60.9304 482.342 55.6207L419.463 6.01686C414.522 2.11958 408.413 0 402.121 0Z"
-                        fill={`${item.color}`}
-                      />
 
-                      <motion.image
-                        href={
-                          item.id === 1
-                            ? product1
-                            : item.id === 2
-                            ? product2
-                            : item.id === 3
-                            ? product3
-                            : product1
-                        }
-                        x={(493 - 429) / 2} // Calculate the x position to center align
-                        y={(544 - 300) / 2} // Calculate the y position to center align
-                        width="429"
-                        height="300"
-                        initial={{ opacity: 0, y: 0, x: 60 }}
-                        animate={{ opacity: 1, y: 0, x: 0 }}
-                        exit={{ opacity: 0, y: 0, x: 0 }}
-                        transition={{ duration: 0.25 }}
-                      />
-                    </svg>
-                  </ResponsiveSVG>
+<ResponsiveSVG>
+  <svg
+    width="493"
+    height="432"
+    viewBox="0 0 493 432"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M402.121 0H20C8.95431 0 0 8.95431 0 20V412C0 423.046 8.9543 432 20 432H473C484.046 432 493 423.046 493 412V77.6038C493 69.0309 489.073 60.9304 482.342 55.6207L419.463 6.01686C414.522 2.11958 408.413 0 402.121 0Z"
+      fill={`${item.color}`}
+    />
+    <motion.image
+      href={
+        item.id === 1
+          ? product1
+          : item.id === 2
+          ? product2
+          : item.id === 3
+          ? product3
+          : product1
+      }
+      x={(493 - 429) / 2} // Center align horizontally
+      y={(432 - 300) / 2} // Center align vertically
+      width="429"
+      height="300"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25 }}
+    />
+  </svg>
+</ResponsiveSVG>
+
+
                 </Col5>
               </>
             ) : (
               <>
                 <Col5>
-                  <ResponsiveSVG>
-                    <svg
-                      width="493"
-                      height="432"
-                      viewBox="0 0 493 432"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M402.121 0H20C8.95431 0 0 8.95431 0 20V412C0 423.046 8.9543 432 20 432H473C484.046 432 493 423.046 493 412V77.6038C493 69.0309 489.073 60.9304 482.342 55.6207L419.463 6.01686C414.522 2.11958 408.413 0 402.121 0Z"
-                        fill={`${item.color}`}
-                      />
-                      <motion.image
-                        href={
-                          item.id === 1
-                            ? product1
-                            : item.id === 2
-                            ? product2
-                            : item.id === 3
-                            ? product3
-                            : product1
-                        }
-                        x={(493 - 429) / 2} // Calculate the x position to center align
-                        y={(544 - 300) / 2} // Calculate the y position to center align
-                        width="429"
-                        height="300"
-                        initial={{ opacity: 0, y: 0, x: 60 }}
-                        animate={{ opacity: 1, y: 0, x: 0 }}
-                        exit={{ opacity: 0, y: 0, x: 0 }}
-                        transition={{ duration: 0.25 }}
-                      />
-                    </svg>
-                  </ResponsiveSVG>
+
+<ResponsiveSVG>
+  <svg
+    width="493"
+    height="432"
+    viewBox="0 0 493 432"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M402.121 0H20C8.95431 0 0 8.95431 0 20V412C0 423.046 8.9543 432 20 432H473C484.046 432 493 423.046 493 412V77.6038C493 69.0309 489.073 60.9304 482.342 55.6207L419.463 6.01686C414.522 2.11958 408.413 0 402.121 0Z"
+      fill={`${item.color}`}
+    />
+    <motion.image
+      href={
+        item.id === 1
+          ? product1
+          : item.id === 2
+          ? product2
+          : item.id === 3
+          ? product3
+          : product1
+      }
+      x={(493 - 429) / 2} // Center align horizontally
+      y={(432 - 300) / 2} // Center align vertically
+      width="429"
+      height="300"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25 }}
+    />
+  </svg>
+</ResponsiveSVG>
+
+
                 </Col5>
-                <Col1 /> {/* Spacer */}
+                <Col1 />
                 <Col6>
                   <Heading1>{"SmartSync"}</Heading1>
                   <SubHeading>

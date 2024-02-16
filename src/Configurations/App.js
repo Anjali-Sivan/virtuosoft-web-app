@@ -9,23 +9,34 @@ import OurAchievements from "../Routes/OurAchievements";
 import ContactUsPage from "../Routes/ContactUsPage";
 import Footer from "../Components/Footer";
 import OurServicesPage from "../Routes/OurServicesPage";
+import PdfViewer from "../Components/PDFViewer";
 
 const App = () => {
-
   return (
     <BrowserRouter>
-      <div>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/about-us" element={<AboutUsPage />} />
-          <Route path="/services" element={<OurServicesPage />} />
-          <Route path="/products" element={<OurProductsPage />} />
-          <Route path="/achievements" element={<OurAchievements />} />
-          <Route path="/contact-us" element={<ContactUsPage />} />  
-        </Routes>
-        <Footer/>
-      </div>
+      <Routes>
+        {/* Navbar is common for all routes except /portfolio */}
+        <Route
+          path="/*"
+          element={
+            <>
+              <Navbar />
+              <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/about-us" element={<AboutUsPage />} />
+                <Route path="/services" element={<OurServicesPage />} />
+                <Route path="/products" element={<OurProductsPage />} />
+                <Route path="/achievements" element={<OurAchievements />} />
+                <Route path="/contact-us" element={<ContactUsPage />} />  
+              </Routes>
+              <Footer />
+            </>
+          }
+        />
+        
+        {/* /portfolio route without Navbar and Footer */}
+        <Route path="/portfolio" element={<PdfViewer />} /> 
+      </Routes>
     </BrowserRouter>
   );
 };

@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import logo from "../../Assets/Logo/virtuosoft-logo-2x.png";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
 
 const FooterWrapper = styled.footer`
   background-color: #0a0a0a;
@@ -13,7 +12,7 @@ const FooterWrapper = styled.footer`
   }
 `;
 
-const FooterContent = styled(motion.div)`
+const FooterContent = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -26,17 +25,17 @@ const FooterContent = styled(motion.div)`
 const Column6 = styled.div`
   flex: 0 0 100%;
   color: #fff;
-  // font-size: 18px;
   @media screen and (min-width: 768px) {
     flex: 0 0 50%;
   }
 `;
 
 const FooterDiv = styled.div`
-  font-size: 61px;
+  font-size: 68px;
   line-height: 81px;
-  font-weight: 300px;
+  font-weight: 300;
   display: flex;
+  flex-direction: column;
   @media screen and (max-width: 768px) {
     font-size: 55px;
     line-height: 70px;
@@ -65,16 +64,13 @@ const Footer = () => {
 
   return (
     <FooterWrapper>
-      <FooterContent
-        initial={{ opacity: 0, y: 60 }}
-        animate={{ opacity: 1, y: 0, transition: { duration: 1.5 } }}
-      >
+      <FooterContent>
         <Column6 className="col-6">
           <Row>
             <FooterDiv>
-              <span>
-                {"Have a project in mind? let’s talk"}
-                &nbsp;
+              <span>{"Have a project"}</span>
+              <span style={{ cursor: 'pointer' }} onClick={() => navigate('/contact-us')}>
+                {"in mind? let's talk "}
                 <svg
                   width="84"
                   height="52"
@@ -108,7 +104,6 @@ const Footer = () => {
                 </svg>
               </span>
             </FooterDiv>
-            <div>{"contact@virtuosoft.in"}</div>
           </Row>
         </Column6>
         <Column2 className="col-2">{/* Empty col-2 */}</Column2>
@@ -129,15 +124,25 @@ const Footer = () => {
                 </li>
                 <li
                   style={{ cursor: "pointer" }}
-                  onClick={() => navigate("/about-us")}
+                  // onClick={() => navigate("/about-us")}
                 >
+                  <a href="#about-us" style={{textDecoration:'none',fontSize: "21px",
+                  lineHeight: "40px",
+                  letterSpacing: "0.5%",
+                  color: "#F5F5F5",}}>
                   {"About"}
+                  </a>
                 </li>
                 <li
                   style={{ cursor: "pointer" }}
-                  onClick={() => navigate("/services")}
+                  // onClick={() => navigate("#services")}
                 >
+                  <a href="#services" style={{textDecoration:'none',fontSize: "21px",
+                  lineHeight: "40px",
+                  letterSpacing: "0.5%",
+                  color: "#F5F5F5",}}>
                   {"Services"}
+                  </a>
                 </li>
                 <li
                   style={{ cursor: "pointer" }}
@@ -157,7 +162,12 @@ const Footer = () => {
                   listStyleType: "none",
                 }}
               >
-                <li>{"Linkedin"}</li>
+                <li> <a  style={{
+                  cursor:'pointer',
+                  textDecoration:'none',
+                  color: "#F5F5F5",
+                }} href="https://www.linkedin.com/company/virtuosoft" target="_blank" rel="noreferrer">
+                {"Linkedin"}</a></li>
                 <li>{"Facebook"}</li>
               </ul>
             </div>
@@ -186,7 +196,7 @@ const Footer = () => {
           }}
         />
          <span style={{ display: window.innerWidth > 768 ? "block" : "none" }}>
-          Copyright © 2024 virtuosoft
+          {"Copyright © 2024 virtuosoft"}
         </span>
       </div>
     </FooterWrapper>

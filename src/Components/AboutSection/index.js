@@ -3,6 +3,7 @@ import styled from "styled-components";
 import image1 from "../../Assets/about-us-img-1.png";
 import image2 from "../../Assets/about us-img-2.png";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const ContainerDiv = styled.div`
   border-radius: 32px;
@@ -12,6 +13,7 @@ const ContainerDiv = styled.div`
   padding-top: 112px;
   padding-bottom: 112px;
   box-sizing: border-box; // Include padding in width calculation
+  max-width:100vw;
 
   @media screen and (max-width: 768px) {
     padding-left: 20px; // Reduced padding for smaller screens
@@ -43,7 +45,8 @@ const Col4 = styled(Col)`
   flex: 0 0 33.3333%;
   font-size: 31px;
   font-weight: 500;
-  line-height: 34.1px;
+  line-height: 56.2px;
+  padding:0;
 
   @media screen and (max-width: 768px) {
     flex-basis: 100%;
@@ -57,6 +60,8 @@ const Col6 = styled(Col)`
   font-size: 36px;
   font-weight: 400;
   line-height: 56.2px;
+  padding:0;
+  margin:0;
 
   @media screen and (max-width: 768px) {
     flex-basis: 100%;
@@ -95,7 +100,7 @@ const ImageDiv = styled.div`
   }
 `;
 
-const Image1 = styled(motion.img)`
+const Image1 = styled.img`
   width: 385px;
   height: 296;
   @media screen and (max-width: 768px) {
@@ -104,7 +109,7 @@ const Image1 = styled(motion.img)`
   }
 `;
 
-const Image2 = styled(motion.img)`
+const Image2 = styled.img`
   width: 280px;
   height: 232px;
   @media screen and (max-width: 768px) {
@@ -124,12 +129,15 @@ const AboutSection = () => {
         setIsVisible(rect.top < window.innerHeight);
       }
     };
-
+  
     window.addEventListener("scroll", handleScroll);
+  
+    // Cleanup function to remove the event listener when the component is unmounted
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  
   
 
   const textAnimation = {
@@ -137,11 +145,13 @@ const AboutSection = () => {
     animate: { opacity: 1, y: 0, transition: { duration: 1.5 } },
   };
 
-  const imageAnimation = {
-    initial:{ x: 300, opacity: 0 },
-    animate:{ x: 0, opacity: 1 },
-    exit:{ x: -300, opacity: 0 }
-  };
+  const navigate = useNavigate();
+
+  // const imageAnimation = {
+  //   initial:{ x: 300, opacity: 0 },
+  //   animate:{ x: 0, opacity: 1 },
+  //   exit:{ x: -300, opacity: 0 }
+  // };
 
   return (
     <ContainerDiv id="aboutSection">
@@ -150,20 +160,20 @@ const AboutSection = () => {
           WHO WE ARE
         </Col4>
         <Col6 variants={textAnimation} initial="initial" animate={isVisible && "animate"}>
-          <p>
+          {/* <p> */}
             Our team comprises highly skilled professionals with extensive
             experience in supporting a wide range of applications across various
             industries.
-          </p>
+          {/* </p> */}
           <p>
             We stay updated with the latest technologies and industry trends to
             deliver the best solutions. We look forward to partnering and
             helping to achieve the business objectives.
           </p>
-          <Button>{"More about us"}</Button>
+          <Button onClick={()=>navigate('/about-us')}>{"More about us"}</Button>
           <ImageDiv id="aboutImage">
-            <Image1 variants={imageAnimation} src={image1} alt="about-us1" />
-            <Image2 variants={imageAnimation} src={image2} alt="about-us2" />
+            <Image1 src={image1} alt="about-us1" />
+            <Image2 src={image2} alt="about-us2" />
           </ImageDiv>
         </Col6>
       </Row>

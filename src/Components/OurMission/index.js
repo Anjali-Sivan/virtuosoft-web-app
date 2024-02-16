@@ -10,10 +10,10 @@ const ContainerDiv = styled.div`
   padding-right: 100px;
   padding-top: 80px;
   padding-bottom: 72px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 
   @media screen and (max-width: 768px) {
-    padding-left: 20px; 
+    padding-left: 20px;
     padding-right: 20px;
     padding-top: 40px;
     padding-bottom: 40px;
@@ -27,6 +27,7 @@ const Text = styled(motion.p)`
   font-weight: 400;
   line-height: 56px;
   text-align: left;
+
   @media screen and (max-width: 768px) {
     font-size: 24px;
   }
@@ -52,10 +53,8 @@ const OurMission = () => {
 
     // Cleanup
     return () => {
-      // eslint-disable-next-line
-      observer.unobserve(ref.current);
+      observer.disconnect();
     };
-    // eslint-disable-next-line
   }, []);
 
   const textAnimation = {

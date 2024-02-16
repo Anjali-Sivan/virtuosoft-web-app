@@ -70,8 +70,8 @@ const Heading = styled.div`
 const Heading1 = styled.div`
   font-size: 31px;
   font-weight: 400;
-  padding-bottom: 6px;
   color: #0e1014;
+  padding-bottom:6px;
   @media screen and (max-width: 768px) {
     font-size: 24px;
   }
@@ -81,16 +81,16 @@ const SubHeading = styled.div`
   font-size: 18px;
   font-weight: 400;
   color: #0e1014;
-  padding-top: 6px;
+  padding:0;
   @media screen and (max-width: 768px) {
     font-size: 16px;
   }
 `;
 
-const Paragraph = styled(motion.p)`
+const Paragraph = styled(motion.div)`
   font-size: 18px;
   font-weight: 400;
-  padding-top: 24px;
+  padding-top: 25px;
   line-height: 32px;
   color: #555c67;
   @media screen and (max-width: 768px) {
@@ -145,7 +145,7 @@ const ViewMoreButton = styled.button`
   color: #0e1014;
   font-size: 18px;
   background: #fff;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   @media screen and (max-width: 768px) {
     font-size: 12px;
@@ -162,6 +162,10 @@ const ArrowButton = styled.button`
   height: 48px;
   border-radius: 50%;
   cursor: pointer;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 `;
 
 const OurProducts = () => {
@@ -192,6 +196,7 @@ const OurProducts = () => {
               item.id === currentIndex && (
                 <React.Fragment key={index}>
                   <Col7 key={index}>
+                    <div>
                     <Heading1>{"SmartSync"}</Heading1>
                     <SubHeading>
                       <b>{item.subheading}</b>
@@ -204,6 +209,8 @@ const OurProducts = () => {
                     >
                       {item.paragrapgh}
                     </Paragraph>
+                    </div>
+                 
                     <ArrowsDiv>
                       <ArrowsAndText>
                         <ArrowButton onClick={handlePrevClick}>

@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { data } from "./Contents";
-import { motion } from "framer-motion";
 
 const ContainerDiv = styled.div`
   box-sizing: border-box;
@@ -24,7 +23,7 @@ const Row = styled.div`
   }
 `;
 
-const Col4 = styled(motion.div)`
+const Col4Styles = css`
   flex: 1 1 calc(33.3333% - (2 * 40px / 3));
   max-width: calc(33.3333% - (2 * 40px / 3));
   font-size: 31px;
@@ -37,10 +36,25 @@ const Col4 = styled(motion.div)`
   padding: 24px;
   color: #0e1014;
   box-sizing: border-box;
+  opacity: ${(props) => (props.inView ? 1 : 0)};
+  transform: scale(${(props) => (props.inView ? 1 : 0)});
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+
   @media screen and (max-width: 768px) {
     flex-basis: 100%;
     max-width: 100%;
     font-size: 24px;
+    opacity: 1;
+    transform: scale(1);
+  }
+`;
+
+const Col4 = styled.div`
+  ${Col4Styles}
+
+  @media screen and (max-width: 768px) {
+    opacity: 1;
+    transform: scale(1);
   }
 `;
 
@@ -71,38 +85,28 @@ const ForWhomSection = () => {
   const ref = useRef(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setInView(true);
-          }
-        });
-      },
-      { threshold: 0.5 } // Adjust the threshold as needed
-    );
+    const handleScroll = () => {
+      const top = ref.current.getBoundingClientRect().top;
+      setInView(top >= 0 && top <= window.innerHeight);
+    };
 
-    observer.observe(ref.current);
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Trigger the initial check
 
     // Cleanup
     return () => {
-      // eslint-disable-next-line
-      observer.unobserve(ref.current);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
-    <ContainerDiv ref={ref}>
+    <ContainerDiv>
       <Row>
         <Heading>{"FOR WHOM ?"}</Heading>
       </Row>
       <Row>
         {data.slice(0, 3).map((item, index) => (
-          <Col4
-            key={index}
-            animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
-            transition={{ duration: 0.5 }}
-          >
+          <Col4 key={index} inView={inView} ref={ref}>
             <div>{item.icon}</div>
             <DescriptionText>{item.desc}</DescriptionText>
           </Col4>
@@ -110,11 +114,7 @@ const ForWhomSection = () => {
       </Row>
       <Row>
         {data.slice(3).map((item, index) => (
-          <Col4
-            key={index}
-            animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
-            transition={{ duration: 0.5 }}
-          >
+          <Col4 key={index} inView={inView} ref={ref}>
             <div>{item.icon}</div>
             <DescriptionText>{item.desc}</DescriptionText>
           </Col4>

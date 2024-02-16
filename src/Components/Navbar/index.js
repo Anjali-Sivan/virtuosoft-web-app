@@ -52,6 +52,7 @@ const NavLinks = styled.ul`
 // Styled component for the navigation link
 const NavLink = styled.li`
   padding: 15px 20px;
+
 `;
 
 const Link = styled.a`
@@ -62,6 +63,11 @@ const Link = styled.a`
   font-weight: 500;
   line-height: 24px;
   letter-spacing: 0.09px;
+  box-sizing:border-box;
+  transition: border-bottom 0.5s ease, color 0.5s ease; /* Add transition */
+  &:hover {
+    border-bottom:5px solid #000;
+  }
 `;
 
 // Styled component for the contact link
@@ -70,7 +76,7 @@ const ContactLink = styled(NavLink)`
   right: 40px;
   border-radius: 60px;
   border: 1.5px solid #000;
-  height: 20px;
+  height: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,6 +89,13 @@ const ContactLink = styled(NavLink)`
   letter-spacing: 0.075px;
   text-decoration: none;
   width: 120px;
+  transition: background-color 0.5s ease, color 0.5s ease; /* Add transition */
+  
+  &:hover {
+    background-color: #000;
+    color: #fff;
+  }
+
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -117,8 +130,8 @@ const Navbar = () => {
       <NavLinks isOpen={isOpen}>
         {[
           { label: "Home", link: "/" },
-          { label: "About", link: "/about-us" },
-          { label: "Services", link: "/services" },
+          { label: "About", link: "#about-us" },
+          { label: "Services", link: "#services" },
           { label: "Our products", link: "/products" },
           { label: "Achievements", link: "/achievements" },
         ].map((item, index) => (

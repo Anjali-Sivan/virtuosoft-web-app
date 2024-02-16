@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import image1 from '../../Assets/about-us-img-1.png';
 import image2 from '../../Assets/about us-img-2.png';
@@ -102,6 +102,10 @@ color:#0E1014;
 `;
 
 const AboutUsPage = () => {
+
+  useEffect(() => {
+      window.scrollTo(0, 0);
+  }, []);
     return (
         <Section>
         <Container>

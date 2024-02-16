@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { data } from "./Contents";
 
@@ -161,6 +161,10 @@ const IconContainer = styled.div`
 `;
 
 const OurAchievements = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
   return (
     <Section>
       <ContainerDiv>
