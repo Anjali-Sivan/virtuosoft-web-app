@@ -35,7 +35,7 @@ const App = () => {
         />
         
         {/* /portfolio route without Navbar and Footer */}
-        <Route path="/portfolio" element={<PdfViewer />} /> 
+        <Route path="/portfolio.pdf" element={<PdfViewer />} /> 
       </Routes>
     </BrowserRouter>
   );
