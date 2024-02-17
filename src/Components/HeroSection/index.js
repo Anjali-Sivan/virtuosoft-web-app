@@ -149,7 +149,7 @@ const HeroSection = () => {
   // Define animations for text and images
   const textAnimation = {
     initial: { opacity: 0, y: 60 },
-    animate: { opacity: 1, y: 0, transition: { duration: 1.5 } },
+    animate: { opacity: 1, y: 0, transition: { duration: 1.7 } },
   };
 
   const imageAnimation = {

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import image1 from '../../Assets/about-us-img-1.png';
-import image2 from '../../Assets/about us-img-2.png';
+import image2 from '../../Assets/about-us-img-2.png';
 
 const Section = styled.div`
   padding-left: 100px;
@@ -75,8 +75,10 @@ width : 100%;
 height : 415px;
 max-width:100%;
 max-height:100%;
+border-radius:16px;
 @media screen and (max-width: 768px) {
   height:202px;
+  border-radius:8px;
 }
 `;
 
@@ -85,8 +87,10 @@ width : 100%;
 height : 415px;
 max-width:100%;
 max-height:100%;
+border-radius:16px;
 @media screen and (max-width: 768px) {
 height : 202px;
+border-radius:8px;
 }
 `;
 

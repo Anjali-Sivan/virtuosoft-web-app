@@ -35,6 +35,9 @@ const Row = styled.div`
   box-sizing: border-box;
   width: 100%;
   padding-bottom: 100px;
+  @media screen and (max-width: 768px) {
+    padding-bottom: 30px;
+  }
 `;
 
 const Col6 = styled.div`
@@ -91,6 +94,8 @@ const Heading = styled.div`
   color: #0e1014;
   @media screen and (max-width: 768px) {
     font-size: 24px;
+    padding-top: 10px;
+    padding-bottom: 20px;
   }
 `;
 
@@ -235,8 +240,6 @@ const OurProductsPage = () => {
     />
   </svg>
 </ResponsiveSVG>
-
-
                 </Col5>
                 <Col1 />
                 <Col6>

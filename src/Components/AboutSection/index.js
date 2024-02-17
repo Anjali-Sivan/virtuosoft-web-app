@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import image1 from "../../Assets/about-us-img-1.png";
-import image2 from "../../Assets/about us-img-2.png";
+import image2 from "../../Assets/about-us-img-2.png";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
@@ -103,18 +103,22 @@ const ImageDiv = styled.div`
 const Image1 = styled.img`
   width: 385px;
   height: 296;
+  border-radius:16px;
   @media screen and (max-width: 768px) {
     width: 158px;
     height: 135px;
+    border-radius:8px;
   }
 `;
 
 const Image2 = styled.img`
   width: 280px;
   height: 232px;
+  border-radius:16px;
   @media screen and (max-width: 768px) {
     width: 130px;
     height: 105px;
+    border-radius:8px;
   }
 `;
 
