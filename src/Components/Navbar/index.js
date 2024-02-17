@@ -38,7 +38,7 @@ const NavLinks = styled.ul`
   @media screen and (max-width: 768px) {
     flex-direction: column;
     // position: fixed;
-    top: 80px; 
+    top: 50px; 
     width:100vw;
     height:100vh;
     background-color: #fff; // Background color for the dropdown
