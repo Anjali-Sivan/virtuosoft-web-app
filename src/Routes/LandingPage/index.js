@@ -6,6 +6,7 @@ import OurServices from "../../Components/OurServices";
 import OurProducts from "../../Components/OurProducts";
 import ForWhomSection from "../../Components/ForWhomSection";
 import OurMission from "../../Components/OurMission";
+import Testimonials from "../../Components/Testimonials";
 
 const Section = styled.div`
   padding-left: 100px;
@@ -40,6 +41,9 @@ const LandingPage = () => {
       </Section>
       <Section>
         <ForWhomSection />
+      </Section>
+      <Section>
+        <Testimonials />
       </Section>
       <OurMission />
     </>

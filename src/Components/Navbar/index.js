@@ -1,9 +1,7 @@
-// Importing React and styled-components
 import React, { useState } from "react";
 import logo from "../../Assets/Logo/virtuosoft-logo-2x.png";
 import styled from "styled-components";
 import { MenuButton } from "../MenuBUtton";
-// import { useNavigate } from "react-router-dom";
 
 // Styled component for the navbar container
 const NavbarContainer = styled.nav`
@@ -20,15 +18,6 @@ const NavbarContainer = styled.nav`
   z-index:2000;
 `;
 
-// Styled component for the logo
-// const Logo = styled.image`
-//   visibility: hidden; // The logo is not displayed on small screens
-//   @media screen and (min-width: 768px) {
-//     visibility: visible;
-//   }
-// `;
-
-// Styled component for the navigation links
 const NavLinks = styled.ul`
   list-style: none;
   display: flex;

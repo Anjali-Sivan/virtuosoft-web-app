@@ -67,19 +67,19 @@ const Col12 = styled(Col)`
   }
 `;
 
-const Col4 = styled(Col)`
-  padding-top: 16px;
-  flex: 0 0 33.3333%;
-  color: #0e1014;
-  font-size: 21px;
-  line-height: 31px;
-  font-weight: 500;
-  @media screen and (max-width: 768px) {
-    flex-basis: 100%;
-    font-size: 11px;
-    line-height: 15px;
-  }
-`;
+// const Col4 = styled(Col)`
+//   padding-top: 16px;
+//   flex: 0 0 33.3333%;
+//   color: #0e1014;
+//   font-size: 21px;
+//   line-height: 31px;
+//   font-weight: 500;
+//   @media screen and (max-width: 768px) {
+//     flex-basis: 100%;
+//     font-size: 11px;
+//     line-height: 15px;
+//   }
+// `;
 
 const Col3 = styled(Col)`
   padding-top: 16px;
@@ -88,19 +88,13 @@ const Col3 = styled(Col)`
   font-size: 21px;
   line-height: 31px;
   font-weight: 500;
+  box-sizing:border-box;
   @media screen and (max-width: 768px) {
     flex-basis: 100%;
     font-size: 11px;
     line-height: 15px;
   }
 `;
-
-// const Col1 = styled(Col)`
-//   flex: 0 0 8.3333%;
-//   @media screen and (max-width: 768px) {
-//     flex-basis: 100%;
-//   }
-// `;
 
 const Heading = styled.div`
   font-size: 31px;
@@ -237,13 +231,13 @@ const ContactUsPage = () => {
           <Heading>{"CONTACT"}</Heading>
         </Row>
         <Row>
-          <Col4>
+          <Col3>
             {"Virtuosoft Technologies Private Limited,"}
             <br />
             {"ABE#2, Thejaswini Annexe,"}
             <br />
             {"Technopark Phase 1,Trivandrum, Kerala"}
-          </Col4>
+          </Col3>
           {/* <Col1/> */}
           <Col3>
             {"Email"}
@@ -255,6 +249,13 @@ const ContactUsPage = () => {
             {"Linkedin"}
             <br />
             {"Facebook"}
+          </Col3>
+          <Col3>
+          {"Phone"}
+          <br/>
+            {"+91 9526201115"}
+            <br />
+            {"+91 9526019996"}
           </Col3>
         </Row>
         <Row>

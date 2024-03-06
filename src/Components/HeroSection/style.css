@@ -1,0 +1,28 @@
+.slide-up{
+    top:40px;
+    left:10px;
+    animation: slideUp ease .5s forwards 1.2s;
+}
+
+.slide-up1{
+    top:40px;
+    left:10px;
+    animation: slideUp ease .1s forwards 1.2s;
+}
+
+.slide-up2{
+    top:40px;
+    left:10px;
+    animation: slideUp ease 1.5s forwards 1.2s;
+}
+
+.slide-up3{
+    top:40px;
+    left:10px;
+    animation: slideUp ease 2s forwards 1.2s;
+}
+
+@keyframes slideUp {
+    0% {transform: translateY(0);}
+    100% {transform: translateY(-40px);opacity:1;}
+  }

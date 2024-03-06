@@ -9,6 +9,7 @@ import Lottie from "lottie-react";
 import animationData from "./lottiefile.json"; 
 import customer from './customerslottie.json';
 import graph from './graphlottie.json';
+import user from '../../Assets/user.png';
 
 const CenteredText = styled(motion.div)`
   color: #0E1014;
@@ -75,19 +76,34 @@ const OverlayImage = styled.div`
 
 const OverlayImage1 = styled.div`
   position: absolute;
-  top: 0;
+  top: -30px;
   left: 41px;
   width: 207px;
   height: 200px;
   @media screen and (max-width: 768px) {
-    width: 103.5px;
-  height: 100px;
+    width: 134px;
+  height: 128px;
+  top: -15px;
+  left: 20px;
+  }
+`;
+
+const OverlayImage2 = styled.div`
+  position: absolute;
+  bottom: 5px;
+  right: 41px;
+  height: 351px;
+  @media screen and (max-width: 768px) {
+    width: 157px;
+  height: 226px;
+  right: 20px;
+  bottom:-5px;
   }
 `;
 
 
 const StyledImages1 = styled(motion.img)`
-  width: 428px;
+  width: 100%;
   height: 280px;
   max-width:100%;
   max-height:100%;
@@ -102,14 +118,15 @@ const StyledImages1 = styled(motion.img)`
 `;
 
 const StyledImages2 = styled(motion.img)`
-  width: 520px;
-  height: 351px;
+  width: 100%;
+  height: 304px;
   max-width:100%;
   max-height:100%;
+  position:relative;
 
   @media screen and (max-width: 768px) {
     width: 335px;
-    height: 218px;
+    height: 197px;
     max-width:100%;
     max-height:100%;
   }
@@ -130,8 +147,22 @@ const StyledImages3Container = styled.div`
 `;
 
 const StyledImages3 = styled(motion.img)`
-  width: 244px;
+  width: 100%;
   height: 175px;
+  max-width:100%;
+  max-height:100%;
+
+  @media screen and (max-width: 768px) {
+    width: 335px;
+    height: 218px;
+    max-width:100%;
+    max-height:100%;
+  }
+`;
+
+const StyledImages4 = styled(motion.img)`
+  width: 100%;
+  height: 351px;
   max-width:100%;
   max-height:100%;
 
@@ -155,6 +186,10 @@ const HeroSection = () => {
   const imageAnimation = {
     initial: { opacity: 0, y: 60 },
     animate: { opacity: 1, y: 0, transition: { duration: 2 } },
+  };
+  const imageAnimation1 = {
+    initial: { opacity: 0, y: 60 },
+    animate: { opacity: 1, y: 0, transition: { duration: 2.5} },
   };
 
   const handleAnimationComplete = () => {
@@ -194,6 +229,10 @@ const HeroSection = () => {
             onComplete={handleAnimationComplete}
           />
           </OverlayImage1>
+
+          <OverlayImage2>
+          <StyledImages4 variants={imageAnimation1} initial="initial" animate="animate" src={user} alt="Description for Image 2" />
+          </OverlayImage2>
           </Image1Container>
         <Image3Container>
         <StyledImages3Container>
