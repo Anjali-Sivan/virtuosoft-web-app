@@ -168,4 +168,39 @@ export const data = [
     ),
     label: "Ready for use",
   },
+  {
+    id: 5,
+    heading:
+      "Providing technology consulting and software development services to a leading Indian software company",
+    desc: "",
+    icon: (
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 28 28"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M19.8351 8.16622C15.834 8.16622 12.4208 10.6839 11.0937 14.2216L13.279 15.041C14.2744 12.3878 16.8342 10.4996 19.8351 10.4996C20.6498 10.4996 21.4319 10.6387 22.1591 10.8946C24.8827 11.8529 26.8351 14.4483 26.8351 17.4996C26.8351 21.3655 23.7011 24.4996 19.8351 24.4996H8.16846C4.30246 24.4996 1.16846 21.3655 1.16846 17.4996C1.16846 14.4483 3.12083 11.8529 5.8445 10.8946C5.83827 10.7637 5.83512 10.632 5.83512 10.4996C5.83512 5.98923 9.49147 2.33289 14.0018 2.33289C17.7841 2.33289 20.966 4.90421 21.8945 8.39417C21.232 8.24497 20.5427 8.16622 19.8351 8.16622Z"
+          fill="url(#paint0_linear_1_404)"
+        />
+        <defs>
+          <linearGradient
+            id="paint0_linear_1_404"
+            x1="14.0018"
+            y1="2.33289"
+            x2="14.0018"
+            y2="26.9129"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stop-color="#F26E51" />
+            <stop offset="1" stop-color="#FFAD87" />
+          </linearGradient>
+        </defs>
+      </svg>
+    ),
+    label: "Ready for use",
+  },
+
 ];

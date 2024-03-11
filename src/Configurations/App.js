@@ -10,6 +10,7 @@ import ContactUsPage from "../Routes/ContactUsPage";
 import Footer from "../Components/Footer";
 import OurServicesPage from "../Routes/OurServicesPage";
 import PdfViewer from "../Components/PDFViewer";
+import ScrollToTop from "../Components/ScrollToTop";
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
                 <Route path="/contact-us" element={<ContactUsPage />} />  
               </Routes>
               <Footer />
+              <ScrollToTop/>
             </>
           }
         />

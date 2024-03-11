@@ -62,6 +62,11 @@ const Row = styled.div`
 const Footer = () => {
   const navigate = useNavigate();
 
+  const navigateToContact = () => {
+    window.scrollTo(0,0);
+    navigate('/contact-us')
+  }
+
   return (
     <FooterWrapper>
       <FooterContent>
@@ -69,7 +74,7 @@ const Footer = () => {
           <Row>
             <FooterDiv>
               <span>{"Have a project"}</span>
-              <span style={{ cursor: 'pointer' }} onClick={() => navigate('/contact-us')}>
+              <span style={{ cursor: 'pointer' }} onClick={() =>navigateToContact() }>
                 {"in mind? let's talk "}
                 <svg
                   width="84"

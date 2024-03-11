@@ -96,8 +96,8 @@ const Testimonials = () => {
             <ClientDiv>
               <span>{item.icon}</span>
               <ClientDetailsDiv>
-                <span><b>{'La Tricia Clark'}</b></span>
-                <span>{'California, US'}</span>
+                <span><b>{'Geo Sunny'}</b></span>
+                <span>{'India'}</span>
               </ClientDetailsDiv>
             </ClientDiv>
           </Col4>
