@@ -174,6 +174,7 @@ const Button = styled.button`
   letter-spacing: 0.5%;
   width: 121px;
   cursor: pointer;
+  border:none;
   @media screen and (max-width: 768px) {
     width: 100%;
   }

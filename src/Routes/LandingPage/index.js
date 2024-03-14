@@ -36,7 +36,7 @@ const LandingPage = () => {
       <Section id="services">
         <OurServices />
       </Section>
-      <Section>
+      <Section id="products">
         <OurProducts />
       </Section>
       <Section>

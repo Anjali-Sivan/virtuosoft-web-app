@@ -14,7 +14,7 @@ import user from '../../Assets/user.png';
 const CenteredText = styled(motion.div)`
   color: #0E1014;
   text-align: center;
-  font-size: 67px;
+  font-size: 82px;
   font-style: normal;
   font-weight: 500;
   line-height: 80px;
@@ -27,7 +27,7 @@ const CenteredText = styled(motion.div)`
   padding-bottom:52px;
   
   @media screen and (max-width: 768px) {
-    font-size: 26px;
+    font-size: 30px;
     font-style: normal;
     font-weight: 500;
     line-height: 28px;
@@ -199,8 +199,7 @@ const HeroSection = () => {
   return (
     <>
       <CenteredText variants={textAnimation} initial="initial" animate="animate">
-        <div>Mutually thrive by</div>
-        <div>empowering our clients to</div>
+        <div>Empowering our clients to</div>
         <TextWithImage>
           <span>achieve</span>
           <StyledImage variants={imageAnimation} initial="initial" animate="animate" src={heroicon} alt="Descriptive Alt Text" />

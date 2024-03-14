@@ -84,6 +84,12 @@ const Button = styled.button`
   padding-left: 20px;
   padding-right: 20px;
   cursor: pointer;
+  transition: background-color 0.5s ease, color 0.5s ease; /* Add transition */
+  
+  &:hover {
+    background-color: #000;
+    color: #fff;
+  }
   @media screen and (max-width: 768px) {
     font-size: 14px;
   }

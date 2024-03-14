@@ -62,6 +62,9 @@ const Col5 = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: ${props => (props.firstColumn ? "flex-start" : "flex-end")};
+  padding:0;
+  margin:0;
   @media screen and (max-width: 768px) {
     flex: 0 0 100%;
     width: 100%;
@@ -164,7 +167,7 @@ const OurProductsPage = () => {
                   <Paragraph>{item.paragrapgh}</Paragraph>
                 </Col6>
                 <Col1 />
-                <Col5>
+                <Col5 firstColumn={false}>
 
 <ResponsiveSVG>
   <svg
@@ -205,7 +208,7 @@ const OurProductsPage = () => {
               </>
             ) : (
               <>
-                <Col5>
+                <Col5 firstColumn={true}>
 
 <ResponsiveSVG>
   <svg

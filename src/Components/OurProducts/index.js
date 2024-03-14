@@ -147,6 +147,12 @@ const ViewMoreButton = styled.button`
   background: #fff;
   font-weight: 500;
   cursor: pointer;
+  transition: background-color 0.5s ease, color 0.5s ease; /* Add transition */
+  
+  &:hover {
+    background-color: #000;
+    color: #fff;
+  }
   @media screen and (max-width: 768px) {
     font-size: 12px;
     height: 32px;

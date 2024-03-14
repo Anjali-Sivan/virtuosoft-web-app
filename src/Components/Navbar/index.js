@@ -121,7 +121,7 @@ const Navbar = () => {
           { label: "Home", link: "/" },
           { label: "About", link: "/#about-us" },
           { label: "Services", link: "/#services" },
-          { label: "Our products", link: "/products" },
+          { label: "Our products", link: "/#products" },
           { label: "Achievements", link: "/achievements" },
         ].map((item, index) => (
           <NavLink key={index} index={index} onClick={() => setIsOpen(!isOpen)}>
