@@ -18,7 +18,8 @@ export const data = [
     image:<motion.img initial={{ y: 50, opacity: 0 }}
     animate={{ y: 0, opacity: 1 ,transition:{delay:1}}}
     exit={{ y: -200, opacity: 0 }}
-    transition={{ duration: 0.7 }}  src={window.innerWidth > 768 ? service1 : mobileservice1} alt='service-1' style={{maxHeight:'100%',maxWidth:'100%',width:`${window.innerWidth > 768 ?'516px':'110px'}`,height:'108px'}}/>,
+    transition={{ duration: 0.7 }}  src={window.innerWidth > 768 ? service1 : mobileservice1} alt='service-1' 
+    style={{maxHeight:'100%',maxWidth:'100%',width:`${window.innerWidth > 768 ?'516px':'110px'}`,height:'108px'}}/>,
     bgcolor: "#EFEAFD",
   },
   {
@@ -73,7 +74,8 @@ export const data = [
     image:<motion.img initial={{ y: 50, opacity: 0 }}
    animate={{ y: 0, opacity: 1 ,transition:{delay:1}}}
     exit={{ y: -200, opacity: 0 }}
-    transition={{ duration: 0.7 }} src={service5} alt='service-5' style={{maxHeight:'100%',maxWidth:'100%',width:'386px',height:'248px'}}/>,
+    transition={{ duration: 0.7 }} src={service5} alt='service-5' 
+    style={{maxHeight:'100%',maxWidth:'100%',width:'386px',height:'248px'}}/>,
     bgcolor: "#E3E3E3",
   },
 ];
