@@ -55,7 +55,7 @@ const Link = styled.a`
   box-sizing:border-box;
   transition: border-bottom 0.5s ease, color 0.5s ease; /* Add transition */
   &:hover {
-    border-bottom:5px solid #000;
+    border-bottom:3px solid #000;
   }
 `;
 
@@ -77,7 +77,7 @@ const ContactLink = styled(NavLink)`
   line-height: normal;
   letter-spacing: 0.075px;
   text-decoration: none;
-  width: 120px;
+  width: 90px;
   transition: background-color 0.5s ease, color 0.5s ease; /* Add transition */
   
   &:hover {

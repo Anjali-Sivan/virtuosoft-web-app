@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { data } from "./contents";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const Container = styled.div`
   box-sizing: border-box;
   max-width: 100%;
-  padding-top: 100px;
+  padding-top: 100px; /* Adjust based on your design */
+  position: relative; /* Add position relative to the container */
   @media screen and (max-width: 768px) {
-    padding-top: 70px;
+    padding-top: 70px; /* Adjust based on your design */
   }
 `;
 
@@ -19,30 +20,19 @@ const Row = styled.div`
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
+  position: relative; /* Add position relative to the row */
   @media screen and (max-width: 768px) {
     flex-direction: column;
-  }
-`;
-
-const Col7 = styled(motion.div)`
-  flex: 0 0 calc((7 / 12) * 100% - (40px * (5 / 12)));
-  max-width: calc((7 / 12) * 100% - (40px * (5 / 12)));
-  box-sizing: border-box;
-  display: block;
-  @media screen and (max-width: 768px) {
-    flex-basis: 100%;
-    max-width: 100%;
   }
 `;
 
 const Col5 = styled.div`
   flex: 0 0 calc((5 / 12) * 100% - (40px * (7 / 12)));
   max-width: calc((5 / 12) * 100% - (40px * (7 / 12)));
-  display: block;
-  @media screen and (max-width: 768px) {
-    flex-basis: 100%;
-    max-width: 100%;
-  }
+  position: sticky;
+  top: 100px; /* Adjust based on your design */
+  align-self: flex-start;
+  z-index: 1;
 `;
 
 const Heading = styled.div`
@@ -66,7 +56,7 @@ const Indicator = styled.div`
   }
 `;
 
-const SubHeading = styled(motion.div)`
+const SubHeading = styled.div`
   font-size: 44px;
   color: #0e1014;
   font-weight: 400;
@@ -91,7 +81,7 @@ const Paragraph = styled(motion.p)`
 const ImageDiv = styled(motion.div)`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: ${(props) => (props.index === 2 ? "flex-end" : "center")};
   width: 100%;
   height: 312px;
   border-radius: 24px;
@@ -103,133 +93,84 @@ const ImageDiv = styled(motion.div)`
   }
 `;
 
-const ArrowButtonDiv = styled.div`
-  padding-top: 10px;
-  display: flex;
-`;
-
-const ArrowButton = styled.button`
-  background: #fff;
-  border: 1.5px solid #d2dae0;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-`;
-
 const OurServices = () => {
-  const [currentIndex, setCurrentIndex] = useState(1);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const rowRefs = useRef([]);
 
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex % data.length) + 1);
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
 
-  const handlePrev = () => {
-    setCurrentIndex(
-      (prevIndex) => ((prevIndex - 2 + data.length) % data.length) + 1
-    );
-  };
+      const indicesInView = rowRefs.current
+        .filter((ref) => ref) // Filter out any null refs
+        .map((ref, index) => {
+          const top = ref.getBoundingClientRect().top;
+          return { index, top };
+        })
+        .filter(({ top }) => top > 0 && top < windowHeight);
+
+      if (indicesInView.length > 0) {
+        const newIndex = indicesInView[0].index;
+        setCurrentIndex(newIndex);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <Container>
-      <AnimatePresence mode="wait">
-        {data.map(
-          (item, index) =>
-            item.id === currentIndex && (
-              <Row key={index}>
-                <Col5>
-                  <Heading>{"OUR SERVICES"}</Heading>
-                  <Indicator>{`0${item.id}/05`}</Indicator>
-                  <ArrowButtonDiv>
-                    <ArrowButton onClick={handlePrev}>
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M3.53906 10.2266L16.0391 10.2266"
-                          stroke="#0E1014"
-                          strokeWidth="1.8"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M8.57812 15.2479L3.53646 10.2279L8.57812 5.20703"
-                          stroke="#0E1014"
-                          strokeWidth="1.8"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </ArrowButton>
-                    &nbsp;&nbsp;
-                    <ArrowButton onClick={handleNext}>
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M16.4609 10.2266L3.96094 10.2266"
-                          stroke="#0E1014"
-                          strokeWidth="1.8"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M11.4219 15.2479L16.4635 10.2279L11.4219 5.20703"
-                          stroke="#0E1014"
-                          strokeWidth="1.8"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </ArrowButton>
-                  </ArrowButtonDiv>
-                </Col5>
-                <Col7
-                  key={index}
-                  initial={{ y: 50, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -200, opacity: 0 }}
-                  transition={{ duration: 0.7 }}
-                >
-                  <ImageDiv
-                    initial={{ y: 50, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -200, opacity: 0 }}
-                    transition={{ duration: 0.5 }}
-                    color={item.bgcolor}
-                  >
-                    {item.image}
-                  </ImageDiv>
-                  <SubHeading
-                    initial={{ y: 50, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -200, opacity: 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    {item.heading}
-                  </SubHeading>
-                  <Paragraph>
-                    {item.paragrapgh.map((para, paraIndex) => (
-                      <p key={paraIndex}>{para}</p>
-                    ))}
-                  </Paragraph>
-                </Col7>
-              </Row>
-            )
-        )}
-      </AnimatePresence>
+      <Row>
+        <Col5>
+          <Heading>{"OUR SERVICES"}</Heading>
+          <Indicator>{`0${currentIndex + 1}/05`}</Indicator>
+        </Col5>
+        <div
+          style={{
+            flex: "0 0 calc((7 / 12) * 100% - (40px * (5 / 12)))",
+            maxWidth: "calc((7 / 12) * 100% - (40px * (5 / 12)))",
+            boxSizing: "border-box",
+            overflowY: "hidden",
+          }}
+        >
+          {data.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={index === currentIndex ? { opacity: 1, y: 0 } : {}}
+              exit={{ opacity: 0}}
+              transition={{ duration: 0.5 }}
+              ref={(el) => (rowRefs.current[index] = el)}
+              // style={{
+              //   marginBottom: "20px",
+              // }}
+            >
+              <ImageDiv color={item.bgcolor} index={item.id}
+                key={index}
+                initial={{ opacity: 0, y: item.id===2?-20:70 }}
+                animate={index === currentIndex ? { opacity: 1, y: 0,transition:{duration:1,delay:0.5} } : {}}
+                exit={{ opacity: 0}}
+                transition={{ duration: 0.5 }}
+                ref={(el) => (rowRefs.current[index] = el)} >
+                {item.image}
+              </ImageDiv>
+              <SubHeading>{item.heading}</SubHeading>
+              <Paragraph
+              initial={{ opacity: 0, y: 20 }}
+              animate={index === currentIndex ? { opacity: 1, y: 0 } : {}}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              >
+                {item.paragraph.map((para, paraIndex) => (
+                  <p key={paraIndex}>{para}</p>
+                ))}
+              </Paragraph>
+            </motion.div>
+          ))}
+        </div>
+      </Row>
     </Container>
   );
 };
