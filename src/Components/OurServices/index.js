@@ -2,6 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { data } from "./contents";
 import { motion } from "framer-motion";
+import service1 from '../../Assets/service1.png';
+import service2 from '../../Assets/service2.png';
+import service3 from '../../Assets/service3.png';
+import service4 from '../../Assets/service4.png';
+import service5 from '../../Assets/service5.png';
 
 const Container = styled.div`
   box-sizing: border-box;
@@ -120,6 +125,20 @@ const OurServices = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const renderImage = (i)=>
+  {
+    if(i==1)
+    return service1;
+  else  if(i==2)
+  return service2;
+  if(i==3)
+  return service3;
+  if(i==4)
+  return service4;
+  if(i==5)
+  return service5;
+  }
+
   return (
     <Container>
       <Row>
@@ -127,41 +146,39 @@ const OurServices = () => {
           <Heading>{"OUR SERVICES"}</Heading>
           <Indicator>{`0${currentIndex + 1}/05`}</Indicator>
         </Col5>
-        <div
-          style={{
-            flex: "0 0 calc((7 / 12) * 100% - (40px * (5 / 12)))",
-            maxWidth: "calc((7 / 12) * 100% - (40px * (5 / 12)))",
-            boxSizing: "border-box",
-            overflowY: "hidden",
-          }}
-        >
+        <div>
           {data.map((item, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={index === currentIndex ? { opacity: 1, y: 0 } : {}}
-              exit={{ opacity: 0}}
+              exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
               ref={(el) => (rowRefs.current[index] = el)}
-              // style={{
-              //   marginBottom: "20px",
-              // }}
             >
-              <ImageDiv color={item.bgcolor} index={item.id}
-                key={index}
-                initial={{ opacity: 0, y: item.id===2?-20:70 }}
-                animate={index === currentIndex ? { opacity: 1, y: 0,transition:{duration:1,delay:0.5} } : {}}
-                exit={{ opacity: 0}}
-                transition={{ duration: 0.5 }}
-                ref={(el) => (rowRefs.current[index] = el)} >
-                {item.image}
+              <ImageDiv
+                color={item.bgcolor}
+                index={item.id}
+                initial={{ opacity: 0, y: 70 }}
+                animate={index === currentIndex ? { opacity: 1, y: 0, transition: { duration: 0.7, delay: 1 } } : {}}
+                exit={{ opacity: 0, y: -200 }}
+                transition={{ duration: 0.7 }}
+                ref={(el) => (rowRefs.current[index] = el)}
+              >
+               <motion.img initial={{ y: item.id===2?40:70, opacity: 0 }}
+   animate={index === currentIndex ?{ y: 0, opacity: 1 ,transition:{delay:1.6,duration:0.8}}:{}}
+    exit={{ y: -200, opacity: 0 }}
+    transition={{ duration: 0.7 }} src={renderImage(item.id)} alt='service-5' 
+    ref={(el) => (rowRefs.current[index] = el)}
+    style={item.style}/>,
               </ImageDiv>
               <SubHeading>{item.heading}</SubHeading>
               <Paragraph
-              initial={{ opacity: 0, y: 20 }}
-              animate={index === currentIndex ? { opacity: 1, y: 0 } : {}}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={index === currentIndex ? { opacity: 1, y: 0 } : {}}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                ref={(el) => (rowRefs.current[index] = el)}
               >
                 {item.paragraph.map((para, paraIndex) => (
                   <p key={paraIndex}>{para}</p>
