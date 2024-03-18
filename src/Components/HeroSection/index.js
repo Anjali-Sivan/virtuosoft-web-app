@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import heroicon from '../../Assets/heroicon.svg'; 
 import image1 from '../../Assets/technology-consulting.png';
@@ -10,9 +10,10 @@ import animationData from "./lottiefile.json";
 import customer from './customerslottie.json';
 import graph from './graphlottie.json';
 import user from '../../Assets/user.png';
+import './style.css';
 
 
-const CenteredText = styled(motion.div)`
+const CenteredText = styled.div`
   color: #0E1014;
   text-align: center;
   font-size: 82px;
@@ -179,18 +180,20 @@ const StyledImages4 = styled(motion.img)`
 const HeroSection = () => {
   const [isAnimationComplete, setIsAnimationComplete] = useState(false);
 
-  const textAnimation = {
-    initial: { opacity: 0, y: 60 },
-    animate: { opacity: 1, y: 0, transition: { duration: 1} },
-  };
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsAnimationComplete(true);
+    }, 1500);
+    return () => clearTimeout(timeout);
+  }, []);
 
   const imageAnimation = {
     initial: { opacity: 0, y: 60 },
-    animate: { opacity: 1, y: 0, transition: { duration: 2 ,delay:0.5} },
+    animate: { opacity: 1, y: 0, transition: { duration: 2 ,delay:1} },
   };
   const imageAnimation1 = {
     initial: { opacity: 0, y: 60 },
-    animate: { opacity: 1, y: 0, transition: { duration: 2.5,delay:0.6} },
+    animate: { opacity: 1, y: 0, transition: { duration: 2,delay:0.5} },
   };
 
   const handleAnimationComplete = () => {
@@ -199,9 +202,11 @@ const HeroSection = () => {
 
   return (
     <>
-      <CenteredText variants={textAnimation} initial="initial" animate="animate" >
-        <div >Empowering our clients to</div>
-        <TextWithImage>
+      <CenteredText>
+        <div className='animated-text1'>
+          <div>Empowering our clients to</div>
+          </div>
+        <TextWithImage className='animated-text2'>
           <span>achieve</span>
           <StyledImage  src={heroicon} alt="Descriptive Alt Text" />
           <span>their aspirations</span>
@@ -211,37 +216,44 @@ const HeroSection = () => {
         <Image1Container>
           <StyledImages1 variants={imageAnimation} initial="initial" animate="animate" src={image1} alt="Description for Image 1" />
           <OverlayImage>
-            <Lottie
-              animationData={customer}
-              autoplay={!isAnimationComplete}
-              loop={false}
-              onComplete={handleAnimationComplete}
-            />
+            {isAnimationComplete && (
+              <Lottie
+                animationData={customer}
+                autoplay={isAnimationComplete}
+                loop={false}
+                onComplete={handleAnimationComplete}
+              />
+            )}
           </OverlayImage>
         </Image1Container>
         <Image1Container>
           <StyledImages2 variants={imageAnimation} initial="initial" animate="animate" src={image2} alt="Description for Image 2" />
           <OverlayImage1>
-            <Lottie
-              animationData={graph}
-              autoplay={!isAnimationComplete}
-              loop={false}
-              onComplete={handleAnimationComplete}
-              
-            />
+            {isAnimationComplete && (
+              <Lottie
+                animationData={graph}
+                autoplay={isAnimationComplete}
+                loop={false}
+                onComplete={handleAnimationComplete}
+              />
+            )}
           </OverlayImage1>
           <OverlayImage2>
-            <StyledImages4 variants={imageAnimation1} initial="initial" animate="animate" src={user} alt="Description for Image 2" />
+            {isAnimationComplete && (
+              <StyledImages4 variants={imageAnimation1} initial="initial" animate="animate" src={user} alt="Description for Image 2" />
+            )}
           </OverlayImage2>
         </Image1Container>
         <Image3Container>
           <StyledImages3Container>
-            <Lottie
-              animationData={animationData}
-              autoplay={!isAnimationComplete}
-              loop={false}
-              onComplete={handleAnimationComplete}
-            />
+            {isAnimationComplete && (
+              <Lottie
+                animationData={animationData}
+                autoplay={isAnimationComplete}
+                loop={false}
+                onComplete={handleAnimationComplete}
+              />
+            )}
           </StyledImages3Container>
           <StyledImages3 variants={imageAnimation} initial="initial" animate="animate" src={image3} alt="Description for Image 3" className="hide-on-small" />
         </Image3Container>

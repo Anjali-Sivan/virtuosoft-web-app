@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import image1 from "../../Assets/about-us-img-1.png";
 import image2 from "../../Assets/about-us-img-2.png";
 import { useNavigate } from "react-router-dom";
+import './style.css';
 
 const ContainerDiv = styled.div`
   border-radius: 32px;
@@ -174,21 +175,17 @@ const AboutSection = () => {
           </p>
           <Button onClick={()=>navigate('/about-us')}>More about us</Button>
           <ImageDiv>
-            <Image1
+            <img
+            className={`styled-img1 ${isVisible1&&'left'}`}
               ref={imageRef1}
               src={image1}
               alt="about-us1"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isVisible1 ? 1 : 0 }}
-              transition={{ duration: 2, delay: 0.5 }}
             />
-            <Image2
+            <img
+            className={`styled-img2 ${isVisible2&&'left'}`}
               ref={imageRef2}
               src={image2}
               alt="about-us2"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isVisible2 ? 1 : 0 }}
-              transition={{ duration: 1.5, delay: 0.5 }}
             />
           </ImageDiv>
         </Col6>

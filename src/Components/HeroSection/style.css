@@ -1,28 +1,35 @@
-.slide-up{
-    top:40px;
-    left:10px;
-    animation: slideUp ease .5s forwards 1.2s;
+
+.animated-text1{
+    top: 0;
+    overflow: hidden;
+    height: 50%;
 }
 
-.slide-up1{
-    top:40px;
-    left:10px;
-    animation: slideUp ease .1s forwards 1.2s;
+.animated-text2{
+    top: 0;
+    overflow: hidden;
+    height: 50%;
 }
+  .animated-text1 div{
+    animation: showTopText 1s;
+    animation-delay: 0.4s;
+    animation-fill-mode: forwards;
+    bottom: 0;
+    transform: translate(0, 100%);
+    transition: 1.5s all ease-out;
+  }
 
-.slide-up2{
-    top:40px;
-    left:10px;
-    animation: slideUp ease 1.5s forwards 1.2s;
-}
+  .animated-text2 span,img{
+    animation: showTopText 1s;
+    animation-delay: 0.4s;
+    animation-fill-mode: forwards;
+    bottom: 0;
+    transform: translate(0, 100%);
+    transition:1.5s all ease-in;
+  }
 
-.slide-up3{
-    top:40px;
-    left:10px;
-    animation: slideUp ease 2s forwards 1.2s;
-}
-
-@keyframes slideUp {
-    0% {transform: translateY(0);}
-    100% {transform: translateY(-40px);opacity:1;}
+  @keyframes showTopText {
+    0% { transform: translate3d(0, 100%, 0); }
+    /* 50%{ transform: translate3d(0, 50%, 0); } */
+    100% { transform: translate3d(0, 0, 0); }
   }

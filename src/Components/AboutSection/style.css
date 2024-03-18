@@ -1,0 +1,47 @@
+.styled-img1 {
+    --s: 385px; /* the image size */
+    box-sizing: border-box;
+    object-fit: cover;
+    cursor: pointer;
+    transition: 1.5s;
+    box-sizing: border-box;
+    object-fit: cover;
+    cursor: pointer;
+    /* transition: .5s; */
+    width: 385px;
+    height: 296px;
+    border-radius:16px;
+    padding-right: 385px;
+    @media screen and (max-width: 768px) {
+      width: 158px;
+      height: 135px;
+      border-radius:8px;
+    }
+  }
+
+  .styled-img2 {
+    --s: 385px; 
+    box-sizing: border-box;
+    object-fit: cover;
+    cursor: pointer;
+    transition: 1.5s;
+    box-sizing: border-box;
+    object-fit: cover;
+    cursor: pointer;
+    /* transition: .5s; */
+    width: 280px;
+    height: 232px;
+    border-radius:16px;
+    padding-right: 280px;
+    @media screen and (max-width: 768px) {
+      width: 130px;
+      height: 105px;
+      border-radius:8px;
+    }
+  }
+  
+  .left {
+    object-position: left;
+    padding-right: 0;
+    transition: all 1s ease-out;
+  }
