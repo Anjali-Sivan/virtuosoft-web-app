@@ -10,11 +10,9 @@ import animationData from "./lottiefile.json";
 import customer from './customerslottie.json';
 import graph from './graphlottie.json';
 import user from '../../Assets/user.png';
-import { gsap } from 'gsap';
-import SplitText from "gsap-trial/SplitText";
 
 
-const CenteredText = styled.div`
+const CenteredText = styled(motion.div)`
   color: #0E1014;
   text-align: center;
   font-size: 82px;
@@ -181,15 +179,10 @@ const StyledImages4 = styled(motion.img)`
 const HeroSection = () => {
   const [isAnimationComplete, setIsAnimationComplete] = useState(false);
 
-  const textRef = useRef(null);
-
-  useEffect(() => {
-    gsap.registerPlugin(SplitText);
-    const splitText = new SplitText(textRef.current, { type: 'lines' });
-    gsap.from(splitText.lines[0], { duration: 1.2, y: 100, opacity: 0, stagger: 0.1 });
-    gsap.from(splitText.lines[1], { duration: 1.2, y: 100, opacity: 0, stagger: 0.1, delay: 0.4 });
-    setIsAnimationComplete(true);
-  }, []);
+  const textAnimation = {
+    initial: { opacity: 0, y: 60 },
+    animate: { opacity: 1, y: 0, transition: { duration: 1} },
+  };
 
   const imageAnimation = {
     initial: { opacity: 0, y: 60 },
@@ -206,7 +199,7 @@ const HeroSection = () => {
 
   return (
     <>
-      <CenteredText ref={textRef}>
+      <CenteredText variants={textAnimation} initial="initial" animate="animate" >
         <div >Empowering our clients to</div>
         <TextWithImage>
           <span>achieve</span>
